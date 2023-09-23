@@ -164,32 +164,35 @@ public class Fachada {
         return veiculo;
     }
     
-    public static void atualizarCapacidaDeVeiculo(String placa, int novaCapacidade) {
+    public static void atualizarCapacidadeDeVeiculo(String placa, int novaCapacidade) {
+        DAO.begin(); 
         Veiculo veiculo = localizarVeiculoPorPlaca(placa);
         if (veiculo != null) {
             veiculo.setCapacidade(novaCapacidade);
             daoVeiculo.atualizarAtributosVeiculo(veiculo);
             System.out.println("Veiculo : " + veiculo.getPlaca() + " - Teve a capacidade alterada para " + novaCapacidade);
+            DAO.commit(); 
         } else {
             System.out.println("Veículo com placa '" + placa + "' não encontrado.");
+            DAO.rollback(); // desfaz em caso de erro
         }
     }
-    
+
     public static void atualizarCapacidadeDaViagemPorDestino(String destino, int novaCapacidade) {
+        DAO.begin(); 
         List<Viagem> viagens = localizarViagemPorDestino(destino);
-        
         if (!viagens.isEmpty()) {
             for (Viagem viagem : viagens) {
                 viagem.setQuantidade(novaCapacidade);
                 daoViagem.atualizarAtributosViagem(viagem);
                 System.out.println("Viagem com destino '" + destino + "' atualizada com nova capacidade: " + novaCapacidade);
             }
+            DAO.commit(); 
         } else {
             System.out.println("Nenhuma viagem encontrada com destino '" + destino + "'.");
+            DAO.rollback(); // desfaz em caso de erro
         }
     }
-
-
 
     public static void excluirViagemDeMotoristaPorDestino(String destino) {
     	DAO.begin();
