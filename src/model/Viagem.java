@@ -10,8 +10,7 @@ public class Viagem {
 	private String destino;
 	private int quantidade;
 	
-	public Viagem(int id, String data, Veiculo veiculo, Motorista motorista, String destino, int quantidade) {
-        this.id = id;
+	public Viagem(String data, Veiculo veiculo, Motorista motorista, String destino, int quantidade) {
         this.data = data;
         this.destino = destino;
         this.quantidade = quantidade;

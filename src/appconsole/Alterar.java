@@ -15,8 +15,8 @@ public class Alterar {
             List<Viagem> viagemAtualizada = Fachada.localizarViagemPorDestino("Recife");
             System.out.println("A viagem de ID: " + viagemAtualizada.get(0).getId() + " e Destino " + viagemAtualizada.get(0).getDestino() + " foi atualizada com sucesso!"); 
             
-            // Atualizando capacidade de veiculo de placa KBU-0214 para 5
-            Fachada.atualizarCapacidadeDaViagemPorDestino("KBU-0214", 5);
+         // Atualizando capacidade de veiculo de placa KBU-0214 para 5
+            Fachada.atualizarCapacidadeDeVeiculo("KBU-0214", 5);
             Veiculo veiculoAtualizado = Fachada.localizarVeiculoPorPlaca("KBU-0214");
             System.out.println("Veiculo : " + veiculoAtualizado + " - Teve a capacidade alterada para 5");
 		

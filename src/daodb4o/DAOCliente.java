@@ -1,9 +1,3 @@
-/**********************************
- * IFPB - SI
- * POB - Persistencia de Objetos
- * Prof. Fausto Ayres
- **********************************/
-
 package daodb4o;
 
 import java.util.List;
@@ -15,7 +9,7 @@ import model.Motorista;
 public class DAOCliente extends DAO<Motorista>{
 
 	public Motorista read (Object chave){
-		String cpf = (String) chave;	//casting para o tipo da chave
+		String cpf = (String) chave;	
 		Query q = manager.query();
 		q.constrain(Motorista.class);
 		q.descend("cpf").constrain(cpf);
@@ -25,10 +19,5 @@ public class DAOCliente extends DAO<Motorista>{
 		else
 			return null;
 	}
-
-	//--------------------------------------------
-	//  consultas
-	//--------------------------------------------
 	
 }
-

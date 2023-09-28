@@ -108,6 +108,7 @@ public class TelaLogin {
 
 				if(usu!=null) {
 					Fachada.logado = usu;
+					@SuppressWarnings("unused")
 					TelaPrincipal tela = new TelaPrincipal();
 					frame.dispose();
 				}
