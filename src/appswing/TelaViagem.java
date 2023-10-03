@@ -234,6 +234,7 @@ public class TelaViagem {
 
                         Fachada.excluirViagemPorId(idViagem);
                         label.setText("Viagem apagada");
+                        listagem();
                     } else {
                         label.setText("Nenhuma viagem selecionada");
                     }

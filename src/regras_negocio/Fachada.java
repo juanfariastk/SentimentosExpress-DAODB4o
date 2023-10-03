@@ -289,7 +289,7 @@ public class Fachada {
             DAO.rollback();
             System.err.println("Erro ao excluir a viagem com ID " + id + ": " + e.getMessage());
         } finally {
-            DAO.close();
+            DAO.commit();
         }
     }
 
@@ -323,7 +323,7 @@ public class Fachada {
             DAO.rollback();
             System.err.println("Erro ao excluir o veículo com placa " + placa + ": " + e.getMessage());
         } finally {
-            DAO.close();
+            DAO.commit();
         }
     }
     
@@ -360,7 +360,7 @@ public class Fachada {
             DAO.rollback();
             System.err.println("Erro ao excluir o motorista com CNH " + cnh + ": " + e.getMessage());
         } finally {
-            DAO.close();
+            DAO.commit();
         }
     }
 
