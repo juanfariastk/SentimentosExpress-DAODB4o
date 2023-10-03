@@ -20,6 +20,7 @@ public class TelaPrincipal {
     private JMenu mnMotorista;
     private JMenu mnVeiculo;
     private JMenu mnViagem;
+    private JMenu mnConsulta;
     private JLabel label;
 
     public static void main(String[] args) {
@@ -43,7 +44,7 @@ public class TelaPrincipal {
 
     private void initialize() {
         frame = new JFrame();
-        frame.setTitle("Locadora");
+        frame.setTitle("Viagens - Sentimentos Express");
         frame.setBounds(100, 100, 450, 363);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.getContentPane().setLayout(null);
@@ -61,6 +62,7 @@ public class TelaPrincipal {
 
         JMenuBar menuBar = new JMenuBar();
         frame.setJMenuBar(menuBar);
+        
 
         mnMotorista = new JMenu("Motorista");
         mnMotorista.addMouseListener(new MouseAdapter() {
@@ -91,5 +93,15 @@ public class TelaPrincipal {
             }
         });
         menuBar.add(mnViagem);
+        
+        mnConsulta = new JMenu("Consulta");
+        mnConsulta.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                @SuppressWarnings("unused")
+				TelaConsulta tela = new TelaConsulta();
+            }
+        });
+        menuBar.add(mnConsulta);
     }
 }

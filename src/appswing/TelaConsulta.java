@@ -17,6 +17,7 @@ import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
@@ -119,16 +120,26 @@ public class TelaConsulta {
                 } else {
                     switch(index) {
                         case 0:
-                            List<Viagem> resultado1 = Fachada.listarViagensPorData("18/01/2023");
-                            listagemViagens(resultado1);
+                            String data = JOptionPane.showInputDialog(frame, "Digite a data (dd/mm/yyyy):");
+                            if (data != null && !data.isEmpty()) {
+                                List<Viagem> resultado1 = Fachada.listarViagensPorData(data);
+                                listagemViagens(resultado1);
+                            } else {
+                                label_4.setText("Data não fornecida.");
+                            }
                             break;
                         case 1:
-                            Veiculo veiculo = Fachada.localizarVeiculoPorPlaca("JYQ-1219");
-                            if (veiculo != null) {
-                                List<Viagem> resultado2 = veiculo.getLista();
-                                listagemViagens(resultado2);
+                            String placa = JOptionPane.showInputDialog(frame, "Digite a placa do veículo:");
+                            if (placa != null && !placa.isEmpty()) {
+                                Veiculo veiculo = Fachada.localizarVeiculoPorPlaca(placa);
+                                if (veiculo != null) {
+                                    List<Viagem> resultado2 = veiculo.getLista();
+                                    listagemViagens(resultado2);
+                                } else {
+                                    label_4.setText("Veículo não encontrado.");
+                                }
                             } else {
-                                label_4.setText("Veículo não encontrado.");
+                                label_4.setText("Placa não fornecida.");
                             }
                             break;
                         case 2:
@@ -144,7 +155,7 @@ public class TelaConsulta {
 
         comboBox = new JComboBox<>();
         comboBox.setToolTipText("selecione a consulta");
-        comboBox.setModel(new DefaultComboBoxModel<>(new String[] {"Quais as viagens para a data 18/01/2023", "Quais as viagens com o veículo de placa JYQ-1219", "Quais os motoristas que têm mais de 2 viagens"}));
+        comboBox.setModel(new DefaultComboBoxModel<>(new String[] {"Quais as viagens para a data...", "Quais as viagens com o veículo de placa... ", "Quais os motoristas que têm mais de 2 viagens"}));
         comboBox.setBounds(21, 10, 513, 22);
         frame.getContentPane().add(comboBox);
     }
